@@ -457,11 +457,9 @@ const Page = () => {
                   fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >
-                PaatalLok is more than just a streaming platform — it's an
-                underground battlefield where top creators and passionate gamers
-                showcase their skills, stories, and strategies. Whether you love
-                adrenaline-pumping FPS, immersive RPGs, or indie horrors, you'll
-                find your domain here.
+                PaatalLok is your gateway to the underground world of game
+                streaming — where rising creators and top-tier gamers come
+                alive. Dive in, discover, and watch the best in action.
               </p>
               <p
                 style={{
@@ -485,10 +483,14 @@ const Page = () => {
                   fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >
-                <li>🔥 Legendary streamers with unique gameplays</li>
-                <li>👥 Community chats and viewer interaction</li>
-                <li>🧩 Deep dives into game lore and hidden secrets</li>
-                <li>🌌 Discovering new games every week</li>
+                <li>
+                  Renowned streamers delivering unique gameplay experiences
+                </li>
+                <li>
+                  Live community interaction with seamless chat integration
+                </li>
+                <li>In-depth analysis of game lore and hidden narratives</li>
+                <li>Weekly highlights of new and trending game titles</li>
               </ul>
               <p
                 style={{
@@ -500,9 +502,8 @@ const Page = () => {
                   fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >
-                Join us as we journey through forgotten dungeons, future
-                battlefields, and mysterious haunted lands — all from one home:
-                <strong> PaatalLok</strong>.
+                "Discover diverse gaming realms — from dungeons to futuristic
+                battlefields — all in one place: <strong>PaatalLok</strong>."
               </p>
             </div>
           </div>
