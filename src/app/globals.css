@@ -10,7 +10,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --border-color: #333333; /* Dark border */
+    --border-color: #333333; 
     --primary-color: #ffffff;
     --secondary-color: #aaaaaa;
   }
@@ -75,5 +75,15 @@ input:focus, textarea:focus {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
   }
 }

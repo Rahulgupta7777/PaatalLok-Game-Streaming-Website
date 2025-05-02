@@ -1,0 +1,60 @@
+.channel {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 10px;
+    margin: 8px 0;
+    transition: background-color 0.3s ease, transform 0.2s ease, border 0.3s ease;
+    background-color: transparent;
+}
+
+.channel:hover {
+    background-color: rgba(37, 37, 44, 0.5);
+    transform: scale(1.015);
+    border: 3px solid red;
+}
+
+.channel_avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4f4f52;
+    margin-right: 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.channel_avatar:hover {
+    border-color: #a970ff;
+    box-shadow: 0 0 6px rgba(169, 112, 255, 0.5);
+}
+
+.channel_details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+.channel_name {
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.channel_followers {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #ccc;
+}
+
+.channel_dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: red;
+    margin-left: 10px;
+}

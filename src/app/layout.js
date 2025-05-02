@@ -21,11 +21,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      <Navbar/>
-        {children}
-      <Footer/>
+      <head>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      </head>
+      <body
+        className={`layoutWrapper ${geistSans.variable} ${geistMono.variable}`}
+      >
+        <div className="pageWrapper"
+          
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+  <Navbar />
+  <main style={{ flex: 1 }}>{children}</main>
+  <Footer />
+</div>
+
       </body>
     </html>
   );
 }
+
