@@ -142,14 +142,146 @@ const Page = () => {
 
   return (
     <>
+      <style>{`
+        @keyframes glow {
+          0% { text-shadow: 0 0 8px #0ff, 0 0 24px #0ff, 0 0 32px #0ff; }
+          50% { text-shadow: 0 0 12px #0ff, 0 0 32px #0ff, 0 0 48px #0ff; }
+          100% { text-shadow: 0 0 8px #0ff, 0 0 24px #0ff, 0 0 32px #0ff; }
+        }
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+        @keyframes pulse {
+          0% { opacity: 0.5; }
+          50% { opacity: 1; }
+          100% { opacity: 0.5; }
+        }
+        .neon {
+          font-family: 'UnifrakturCook', cursive;
+          color: #ccffee;
+          animation: glow 3s infinite;
+          letter-spacing: 2px;
+          position: relative;
+        }
+        .neon::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+          animation: scanline 2s linear infinite;
+        }
+        .tech-grid {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: 
+            linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+          background-size: 20px 20px;
+          pointer-events: none;
+          opacity: 0.3;
+        }
+        .binary-code {
+          position: absolute;
+          color: rgba(0, 255, 255, 0.1);
+          font-family: monospace;
+          font-size: 12px;
+          white-space: pre;
+          pointer-events: none;
+          animation: pulse 4s ease-in-out infinite;
+        }
+        .channel-card {
+          background: rgba(20,20,20,0.8);
+          border-radius: 12px;
+          box-shadow: 0 0 16px #0ff2;
+          border: 1px solid #222;
+          overflow: hidden;
+          position: relative;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          perspective: 800px;
+          animation: float 6s ease-in-out infinite;
+        }
+        .channel-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.05), transparent);
+          z-index: 1;
+          pointer-events: none;
+        }
+        .channel-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 0 24px #0ff4;
+        }
+        .channel-card-inner {
+          transition: transform 0.5s ease;
+          transform-style: preserve-3d;
+          height: 100%;
+        }
+        .channel-card:hover .channel-card-inner {
+          transform: rotateY(180deg);
+        }
+        .channel-card-front, .channel-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          display: flex;
+          flex-direction: column;
+        }
+        .channel-card-back {
+          background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+          color: #ccffee;
+          transform: rotateY(180deg);
+          padding: 1rem;
+          font-size: 1rem;
+          text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          gap: 0.5rem;
+        }
+        .channel-card-back span {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .channel-card-back em {
+          font-size: 0.9rem;
+          opacity: 0.8;
+          font-style: italic;
+        }
+      `}</style>
+      <div className="tech-grid" />
+      <div className="binary-code" style={{ top: "10%", left: "5%" }}>
+        10101010
+      </div>
+      <div className="binary-code" style={{ top: "30%", right: "5%" }}>
+        01010101
+      </div>
       <h1
+        className="neon"
         style={{
           fontSize: "2.5rem",
           textAlign: "center",
           margin: "30px 0 10px",
-          color: "white",
-          fontWeight: "bold",
-          textShadow: "2px 2px 10px rgba(0,0,0,0.4)",
+          padding: "20px",
+          background: "rgba(0, 0, 0, 0.7)",
+          borderRadius: "12px",
+          border: "2px solid rgba(0, 255, 255, 0.2)",
+          boxShadow: "0 0 20px rgba(0, 255, 255, 0.2)",
         }}
       >
         Discover Your Next Favorite Gaming Creator 🎮
@@ -157,13 +289,15 @@ const Page = () => {
       <p
         style={{
           textAlign: "center",
-          color: "#D1D5DB",
+          color: "#ccffee",
           fontSize: "1.1rem",
           marginBottom: "20px",
+          textShadow: "0 0 10px rgba(0, 255, 255, 0.5)",
+          fontFamily: "'Space Grotesk', sans-serif",
         }}
       >
-        Welcome to our creator spotlight! Click on a card to jump into the world
-        of your favorite gaming personalities.
+        Explore the world of top gaming creators — click a card to discover your
+        favorites!
       </p>
       <div>
         <div
@@ -174,7 +308,7 @@ const Page = () => {
             background: "linear-gradient(to bottom right, #111827, #000000)",
             padding: "20px",
             minHeight: "100vh",
-            fontFamily: "Arial, sans-serif",
+            fontFamily: "'Space Grotesk', sans-serif",
           }}
         >
           {channels.map((channel) => (
