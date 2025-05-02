@@ -109,10 +109,6 @@ const Navbar = () => {
             <span className={styles.header_premiumText}>Premium</span>
           </div>
 
-          <div className={styles.header_rightBits}>
-            <i className="fa fa-gem"></i>
-            <h4>Get Bits</h4>
-          </div>
 
           <div className={styles.header_avatarContainer}>
             <Avatar
