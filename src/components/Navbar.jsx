@@ -10,10 +10,21 @@ import "font-awesome/css/font-awesome.min.css";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const sidebarRef = useRef();
+  const searchRef = useRef();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleSearchFocus = () => {
+    setIsSearchFocused(true);
+  };
+
+  const handleSearchBlur = () => {
+    setIsSearchFocused(false);
   };
 
   useEffect(() => {
@@ -35,7 +46,7 @@ const Navbar = () => {
   return (
     <div className={styles.header}>
       <div className={styles.header_left}>
-        <Link href="/">
+        <Link href="/" className={styles.header_logoLink}>
           <Image
             src="/logo.png"
             alt="PaatalLok Logo"
@@ -44,31 +55,73 @@ const Navbar = () => {
             className={styles.header_leftLogo}
           />
         </Link>
-        <Link href="/browse">
-          <h2>Streaming Channels</h2>
+        <Link href="/browse" className={styles.header_link}>
+          <h2 className={styles.header_text}>Streaming Channels</h2>
         </Link>
 
         <div className={styles.header_verticalLine}></div>
 
-        <h2 onClick={toggleSidebar}>Following</h2>
+        <h2
+          className={`${styles.header_text} ${styles.header_following}`}
+          onClick={toggleSidebar}
+        >
+          Following
+          <i
+            className={`fa fa-chevron-down ${styles.header_chevron} ${
+              isSidebarOpen ? styles.rotated : ""
+            }`}
+          ></i>
+        </h2>
       </div>
 
-      <div className={styles.header_center}>
-        <input type="text" placeholder="Search" />
+      <div
+        className={`${styles.header_center} ${
+          isSearchFocused ? styles.focused : ""
+        }`}
+      >
+        <input
+          type="text"
+          placeholder="Search games, channels, or creators..."
+          className={styles.header_search}
+          onFocus={handleSearchFocus}
+          onBlur={handleSearchBlur}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          ref={searchRef}
+        />
         <div className={styles.header_centerLogoContainer}>
           <i className="fas fa-search"></i>
         </div>
+        {searchQuery && (
+          <div
+            className={styles.header_clearSearch}
+            onClick={() => setSearchQuery("")}
+          >
+            <i className="fa fa-times"></i>
+          </div>
+        )}
       </div>
 
       <div className={styles.header_right}>
         <div className={styles.header_rightContainer}>
-          <i className="fas fa-crown"></i>
+          <div className={styles.header_premium}>
+            <i className="fas fa-crown"></i>
+            <span className={styles.header_premiumText}>Premium</span>
+          </div>
 
           <div className={styles.header_rightBits}>
             <i className="fa fa-gem"></i>
             <h4>Get Bits</h4>
           </div>
-          <Avatar />
+
+          <div className={styles.header_avatarContainer}>
+            <Avatar
+              className={styles.header_avatar}
+              src="/helpii.png"
+              alt="User Avatar"
+            />
+            <div className={styles.header_avatarStatus}></div>
+          </div>
         </div>
       </div>
 
